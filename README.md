@@ -267,15 +267,24 @@ src/main/resources/application.properties
 Ejemplo:
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/vetturno
-spring.datasource.username=TU_USUARIO
-spring.datasource.password=TU_PASSWORD
+spring.datasource.url=jdbc:mysql://localhost:3306/vetturno_db
+spring.datasource.username=SU_USUARIO
+spring.datasource.password=SU_PASSWORD
 
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
 
-jwt.secret=TU_SECRETO_JWT
+stripe.secret-key=${STRIPE_SECRET_KEY}
+stripe.webhook-secret=${STRIPE_WEBHOOK_SECRET:whsec_pendiente}
+
+stripe.success-url=${STRIPE_SUCCESS_URL:http://localhost:8080/api/pagos/success}
+stripe.cancel-url=${STRIPE_CANCEL_URL:http://localhost:8080/api/pagos/cancel}
+
+jwt.secret=SU_SECRETO_JWT
 jwt.expiration=86400000
+
+
 ```
 
 > No publicar contraseñas, secretos JWT ni otras credenciales reales en GitHub.
@@ -850,7 +859,7 @@ El proyecto incluye:
 
 # 👨‍💻 Autor
 
-**[Jean-René Barthélémy ]**
+**Jean-René Barthélémy **
 
 Proyecto realizado como parte del:
 
